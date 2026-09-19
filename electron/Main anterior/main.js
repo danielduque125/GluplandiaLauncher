@@ -204,32 +204,32 @@ else {
     profile = await readJson(path.join(stateDir, 'profile.json'), null);
 
     auth = new MicrosoftAuth({
-      clientId: config.microsoftClientId,
-      stateDir,
-      secureStorage: safeStorage,
-      openExternal: url => {
-        authWindow = new BrowserWindow({
-          width: 460,
-          height: 620,
-          title: 'Xbox Live',
-          backgroundColor: '#1a1a1a',
-          autoHideMenuBar: true,
-          alwaysOnTop: true, 
-          webPreferences: {
-            nodeIntegration: false,
-            contextIsolation: true
-          }
-        });
-        authWindow.setMenu(null);
-        
-        const loginUrl = new URL(url);
-        loginUrl.searchParams.set('mkt', 'es-ES');
-        
-        authWindow.loadURL(loginUrl.toString());
-      },
-      progress
+  clientId: config.microsoftClientId,
+  stateDir,
+  secureStorage: safeStorage,
+  openExternal: url => {
+    authWindow = new BrowserWindow({
+      width: 460,
+      height: 620,
+      title: 'Xbox Live', // Título idéntico al launcher original
+      backgroundColor: '#1a1a1a', // Fondo oscuro para evitar destellos blancos
+      autoHideMenuBar: true,
+      alwaysOnTop: true, 
+      webPreferences: {
+        nodeIntegration: false,
+        contextIsolation: true
+      }
     });
+    authWindow.setMenu(null);
     
+    // Inyectamos el idioma español de forma segura en la URL
+    const loginUrl = new URL(url);
+    loginUrl.searchParams.set('mkt', 'es-ES');
+    
+    authWindow.loadURL(loginUrl.toString());
+  },
+  progress
+});
     updater = configureUpdater({ app, config, progress, busy });
 
     window = new BrowserWindow({
