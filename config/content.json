@@ -1,0 +1,10 @@
+{
+  "bannerUrl": "",
+  "heroEyebrow": "TU GRUPO. TU HISTORIA.",
+  "heroTitle": "Las criptas vuelven a despertar.",
+  "heroBody": "Reúne a tus compañeros, protege a tu aventurero y cruza el umbral. El launcher se ocupa del resto.",
+  "maintenance": {
+    "enabled": false,
+    "message": "Los portales están cerrados temporalmente mientras preparamos Gluplandia."
+  }
+}

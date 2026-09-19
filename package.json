@@ -1,0 +1,109 @@
+{
+  "name": "gluplandia-launcher",
+  "private": true,
+  "version": "1.3.12",
+  "description": "Launcher de Gluplandia Dungeons para Windows",
+  "author": "Gluplandia; basado en OpenLauncher de CesarGarza55",
+  "type": "module",
+  "main": "electron/main.js",
+  "scripts": {
+    "vite": "vite",
+    "electron": "wait-on http://localhost:5173 && electron .",
+    "electron:dev": "wait-on http://localhost:5173 && nodemon --watch electron --watch config --ext js,cjs,mjs,json --exec \"electron . --dev\"",
+    "dev": "concurrently \"npm run vite\" \"npm run electron:dev\"",
+    "build": "vite build",
+    "start": "electron .",
+    "build:win:dir": "npm run build && electron-builder --win --dir",
+    "build:win:installer": "npm run build && electron-builder --win nsis --x64 --publish never",
+    "test": "node --test tests/*.test.js",
+    "pack:sample": "node tools/sample-pack.mjs",
+    "pack:build": "node tools/build-manifest.mjs",
+    "pack:sign": "node tools/sign-manifest.mjs",
+    "build:win:portable": "npm run build && electron-builder --win portable --x64 --publish never",
+    "release:check": "node tools/release-check.mjs"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "dotenv": "^17.4.2",
+    "electron-updater": "6.8.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@eslint/js": "^10.0.1",
+    "@rolldown/plugin-babel": "^0.2.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "concurrently": "^10.0.3",
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3",
+    "eslint": "^10.7.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.7.0",
+    "nodemon": "^3.1.14",
+    "vite": "^8.1.5",
+    "wait-on": "^9.0.10"
+  },
+  "build": {
+    "appId": "com.gluplandia.launcher",
+    "productName": "Gluplandia Dungeons",
+    "directories": {
+      "output": "release"
+    },
+    "asar": true,
+    "compression": "maximum",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "config/launcher.json",
+      "config/content.json",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "electron/main.js"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "script/icon.ico",
+      "verifyUpdateCodeSignature": true
+    },
+    "portable": {
+      "artifactName": "Gluplandia-Portable-${version}.${ext}"
+    },
+    "electronLanguages": [
+      "en-US",
+      "es"
+    ],
+    "icon": "script/icon.ico",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "danielduque125",
+        "repo": "GluplandiaLauncher",
+        "releaseType": "release"
+      }
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "Gluplandia-Setup-${version}.${ext}"
+    }
+  },
+  "license": "GPL-2.0-only",
+  "engines": {
+    "node": ">=24.15.0 <25"
+  }
+}

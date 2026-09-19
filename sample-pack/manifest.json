@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.0-sample",
+  "revision": 1,
+  "minecraftVersion": "26.2",
+  "fabricVersion": "0.19.5",
+  "files": [
+    {
+      "id": "P7dR8mSH",
+      "name": "[26.2] Fabric API 0.160.0+26.2",
+      "path": "mods/fabric-api-0.160.0+26.2.jar",
+      "url": "https://cdn.modrinth.com/data/P7dR8mSH/versions/UWwhUX3k/fabric-api-0.160.0%2B26.2.jar",
+      "sha256": "5f3dff88e1661166e222213302b25ace6c36dc3683804cbd4b5acf93138ea05e",
+      "size": 2542898,
+      "required": true,
+      "source": {
+        "provider": "modrinth",
+        "projectId": "P7dR8mSH",
+        "versionId": "UWwhUX3k"
+      }
+    },
+    {
+      "id": "mOgUt4GM",
+      "name": "v20.0.2 for 26.2",
+      "path": "mods/modmenu-20.0.2.jar",
+      "url": "https://cdn.modrinth.com/data/mOgUt4GM/versions/WdLLrOzD/modmenu-20.0.2.jar",
+      "sha256": "1bf32f327b2257266e9dbd00b394800885c3a7c5ff86dc62be0dec129c1da482",
+      "size": 616610,
+      "required": true,
+      "source": {
+        "provider": "modrinth",
+        "projectId": "mOgUt4GM",
+        "versionId": "WdLLrOzD"
+      }
+    },
+    {
+      "id": "eXts2L7r",
+      "name": "3.1.0-beta.1+26.2",
+      "path": "mods/placeholder-api-3.1.0-beta.1+26.2.jar",
+      "url": "https://cdn.modrinth.com/data/eXts2L7r/versions/NDqH16LT/placeholder-api-3.1.0-beta.1%2B26.2.jar",
+      "sha256": "c2ca2b5c397a0c198a32e7af68d2d0a011bc2c7baeae5cffd3996efd65c5069e",
+      "size": 254973,
+      "required": true,
+      "source": {
+        "provider": "modrinth",
+        "projectId": "eXts2L7r",
+        "versionId": "NDqH16LT"
+      }
+    },
+    {
+      "id": "AANobbMI",
+      "name": "Sodium 0.9.2 for Fabric 26.2",
+      "path": "mods/sodium-fabric-0.9.2+mc26.2.jar",
+      "url": "https://cdn.modrinth.com/data/AANobbMI/versions/xJZxADzI/sodium-fabric-0.9.2%2Bmc26.2.jar",
+      "sha256": "16a5e91db49750f8c046ecca3b8f2af5a28ea6f9b6581b42f123ca8fda20864f",
+      "size": 1885572,
+      "required": true,
+      "source": {
+        "provider": "modrinth",
+        "projectId": "AANobbMI",
+        "versionId": "xJZxADzI"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+const c=JSON.parse(await fs.readFile('config/launcher.json'));
+const p=JSON.parse(await fs.readFile('package.json'));
+if(!c.releaseMode||!c.manifestUrl||!c.microsoftClientId||/^0{8}-/.test(c.microsoftClientId)||!c.updatePublisher||!c.manifestPublicKey)throw new Error('Completa launcher.json con releaseMode, Microsoft Client ID, URL y clave pública del manifiesto y updatePublisher.');
+if(crypto.createPublicKey(c.manifestPublicKey).asymmetricKeyType!=='ed25519')throw new Error('Se requiere una clave Ed25519.');
+if(p.build.win.publisherName!==c.updatePublisher)throw new Error('build.win.publisherName debe coincidir con updatePublisher y el certificado.');
+if(p.build.publish[0].owner==='CesarGarza55')throw new Error('Configura tu propio repositorio de actualizaciones.');
+if(new URL(c.manifestUrl).protocol!=='https:')throw new Error('Se requiere HTTPS.');
+console.log('Configuración de distribución comprobada.');
