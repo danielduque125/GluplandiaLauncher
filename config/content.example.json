@@ -1,0 +1,7 @@
+{
+  "bannerUrl": "https://gluplandia.com/assets/download-dungeon-party.png",
+  "news": [
+    { "title": "El portal te espera", "body": "Explora Gluplandia con tus compañeros. Consulta las reglas y los anuncios en nuestra web." },
+    { "title": "Tu equipo, al día", "body": "El launcher verifica el modpack antes de entrar. Puedes reparar la instalación desde la pantalla principal." }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Gluplandia Dungeons",
+  "minecraftVersion": "26.2",
+  "manifestUrl": "https://raw.githubusercontent.com/danielduque125/Gluplandia-Modpack/main/packs/1.0.0/manifest.json",
+  "manifestPublicKey": "",
+  "microsoftClientId": "9e446a0c-f152-4334-8596-f63073971cf3",
+  "serverAddress": "play.gluplandia.com",
+  "websiteUrl": "https://gluplandia.com",
+  "contentUrl": "https://raw.githubusercontent.com/danielduque125/GluplandiaLauncher/main/config/content.json",
+  "releaseMode": false,
+  "updatePublisher": "",
+  "allowUserMods": true,
+  "skinBridgeUrl": "http://va53.holy.gg:25750",
+  "microsoftRedirectUri": "https://microsoftonline.com",
+  "microsoftScopes": "XboxLive.signin offline_access"
+}

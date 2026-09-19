@@ -1,0 +1,44 @@
+name: Compilar Gluplandia para Windows
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Validar edición de distribución
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          npm run release:check
+          node -e "if(process.env.GITHUB_REF_NAME !== 'v'+require('./package.json').version) process.exit(1)"
+      - name: Compilar instalador NSIS
+        run: npm run build:win:installer
+        env:
+          CSC_LINK: ${{ secrets.CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
+      - name: Verificar firma para distribución
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          $installer = Get-ChildItem release/Gluplandia-Setup-*.exe | Select-Object -First 1
+          $signature = Get-AuthenticodeSignature $installer.FullName
+          if ($signature.Status -ne 'Valid') { throw 'Instalador sin firma Authenticode válida' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Gluplandia-Windows
+          path: |
+            release/Gluplandia-Setup-*.exe
+            release/*.blockmap
+            release/latest.yml
+          if-no-files-found: error
